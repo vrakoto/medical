@@ -12,14 +12,15 @@
             </tr>
         </thead>
         <tbody>
-            <!-- <tr>
+            <tr>
                 <th scope="row">1</th>
                 <td>Mark</td>
                 <td>Otto</td>
                 <td>45</td>
                 <td>Sida</td>
                 <td>03/03/2022</td>
-            </tr> -->
+                <td><a href="index.php?page=modifierPatient&" class="btn btn-primary">Modifier</a></td>
+            </tr>
         </tbody>
     </table>
     <div class="loader"></div>

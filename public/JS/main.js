@@ -99,6 +99,10 @@ $(function () {
         });
     }
 
+    function test() {
+        $("#modifierPatient").last().append("<tr><td></td><td></td></tr>");
+    }
+
     if (url.includes("page=listePatients")) {
         listePatients();
     }
@@ -113,5 +117,9 @@ $(function () {
 
     $('#btnInscriptionPatient').click((e) => {
         inscritionPatient();
+    });
+
+    $('#addMaladie').click((e) => {
+        test();
     });
 });

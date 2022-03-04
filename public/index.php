@@ -14,11 +14,15 @@ switch ($page) {
     break;
 
     case 'listePatients':
-        require_once $pages . 'medecin.php';
+        require_once $pages . 'listePatients.php';
     break;
 
     case 'ajouterPatient':
         require_once $pages . 'ajouterPatient.php';
+    break;
+
+    case 'modifierPatient':
+        require_once $pages . 'modifierPatient.php';
     break;
 
     case 'inscription':
