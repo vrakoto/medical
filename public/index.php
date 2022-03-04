@@ -8,7 +8,7 @@ $page = $_REQUEST['page'] ?? 'accueil';
 
 $sid = $_SESSION['id'] ?? '';
 
-$access = ['accueil', 'inscription'];
+/* $access = ['accueil', 'inscription'];
 if (!empty($sid)) {
     $access = ['listePatients', 'ajouterPatient', 'deconnexion'];
 }
@@ -16,7 +16,7 @@ if (!empty($sid)) {
 if (!in_array($page, $access)) {
     header('Location:index.php?page=accueil');
     exit();
-}
+} */
 
 
 require_once $elements . 'header.php';

@@ -27,7 +27,7 @@ $(function () {
 
     $('#connexion').click((e) => {
         const identifiant = $('#username').val();
-        const mdp = $('#mdp').val();
+        const mdp = $('#password').val();
 
         request = $.ajax({
             type: 'POST',
