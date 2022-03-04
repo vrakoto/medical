@@ -36,6 +36,7 @@
 
             <div class="login-button">
                 <button class="btn btn-outline-primary" id="btnInscription">S'INSCRIRE</button>
+                <a href="index.php?page=accueil" class="btn btn-outline-primary" id="btnInscription">SE CONNECTER</a>
             </div>
         </div>
     </div>

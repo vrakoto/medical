@@ -1,9 +1,23 @@
 <?php
+session_start();
 $root = dirname(__DIR__) . DIRECTORY_SEPARATOR;
 $pages = $root . 'pages' . DIRECTORY_SEPARATOR;
 $elements = $root . 'elements' . DIRECTORY_SEPARATOR;
 
 $page = $_REQUEST['page'] ?? 'accueil';
+
+$sid = $_SESSION['id'] ?? '';
+
+$access = ['accueil', 'inscription'];
+if (!empty($sid)) {
+    $access = ['listePatients', 'ajouterPatient', 'deconnexion'];
+}
+
+if (!in_array($page, $access)) {
+    header('Location:index.php?page=accueil');
+    exit();
+}
+
 
 require_once $elements . 'header.php';
 
@@ -21,42 +35,13 @@ switch ($page) {
     break;
 
     case 'inscription':
-        if (isset($_POST['id'], $_POST['nom'], $_POST['prenom'], $_POST['mdp'], $_POST['mdp_c'])) {
-            $errors = [];
-            $id = htmlentities($_POST['id']);
-            $nom = htmlentities($_POST['nom']);
-            $prenom = htmlentities($_POST['prenom']);
-            $mdp = htmlentities($_POST['mdp']);
-            $mdp_c = htmlentities($_POST['mdp_c']);
-
-            if (mb_strlen($id) <= 0) {
-                $erreurs['id'] = 'Identifiant incorrect';
-            }
-
-            if (mb_strlen($nom) <= 0) {
-                $erreurs['nom'] = 'Nom est incorrect';
-            }
-
-            if (mb_strlen($prenom) <= 0) {
-                $erreurs['prenom'] = 'Prénom est incorrect';
-            }
-
-            if (mb_strlen($mdp) <= 3 || mb_strlen($mdp) >= 255 ) {
-                $erreurs['mdp'] = 'Mot de passe trop court';
-            }
-
-            if ($mdp_c !== $mdp) {
-                $erreurs['mdp_c'] = 'Les mots de passe ne coresspondent pas';
-            }
-
-            if (empty($errors)) {
-                $erreur = 'Erreur formulaire';
-            } else {
-                header('Location:index.php?page=accueil');
-                exit();
-            }
-        }
         require_once $pages . 'inscription.php';
+    break;
+
+    case 'deconnexion':
+        unset($_SESSION['id']);
+        header('Location:index.php?page=accueil');
+        exit();
     break;
 
     default:

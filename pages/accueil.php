@@ -7,7 +7,7 @@
             DOCTOR PANEL
         </div>
 
-        <form class="login-form" method="POST" action="index.php?page=accueil">
+        <div class="login-form">
             <div class="form-group">
                 <input type="text" id="username" autofocus autocomplete="off" required>
                 <label for="username"><i class="fa-solid fa-fingerprint"></i> Identifiant</label>
@@ -19,10 +19,9 @@
             </div>
 
             <div class="login-button">
-                <button class="btn btn-outline-primary" type="submit">SE CONNECTER</button>
+                <button class="btn btn-outline-primary" id="connexion">SE CONNECTER</button>
                 <a href="index.php?page=inscription" class="btn btn-outline-primary">INSCRIPTION</a>
             </div>
-        </form>
+        </div>
     </div>
 </div>
-<div class="ajax">Btn</div>

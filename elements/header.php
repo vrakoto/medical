@@ -35,7 +35,7 @@
                     </li>
                 </ul>
                 <form class="d-flex">
-                    <button class="btn btn-outline-danger">Se déconnecter</button>
+                    <a href="index.php?page=deconnexion" class="btn btn-outline-danger">Se déconnecter</a>
                 </form>
             </div>
         </div>

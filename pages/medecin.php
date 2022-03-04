@@ -22,4 +22,5 @@
             </tr> -->
         </tbody>
     </table>
+    <div class="loader"></div>
 </div>
