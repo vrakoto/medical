@@ -32,7 +32,7 @@ $(function () {
         request = $.ajax({
             type: 'POST',
             url: 'http://localhost:8000/api/login',
-            data: 'identifiant=' + identifiant + '&mdp=' + mdp
+            data: 'username=' + identifiant + '&password=' + mdp
         });
      
         request.done(function (datas, textStatus, jqXHR) {
