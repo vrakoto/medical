@@ -22,5 +22,5 @@
             </tr> -->
         </tbody>
     </table>
+    <div class="loader"></div>
 </div>
-<button class="ajax">btn</button>

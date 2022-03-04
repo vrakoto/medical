@@ -29,9 +29,8 @@
             </div>
 
             <div class="login-button">
-                <button class="btn btn-outline-primary" id="btnInscription">CRÉER</button>
+                <button class="btn btn-outline-primary" id="btnInscriptionPatient">CRÉER</button>
             </div>
         </div>
     </div>
 </div>
-<button class="ajax">btn</button>
