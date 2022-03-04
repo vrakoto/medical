@@ -12,12 +12,20 @@ switch ($page) {
         require_once $pages . 'accueil.php';
     break;
 
-    case 'medecin':
+    case 'listePatients':
         require_once $pages . 'medecin.php';
+    break;
+
+    case 'ajouterPatient':
+        require_once $pages . 'ajouterPatient.php';
     break;
 
     case 'inscription':
         require_once $pages . 'inscription.php';
+    break;
+
+    default:
+        require_once $pages . '404.php';
     break;
 }
 
