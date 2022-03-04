@@ -35,11 +35,7 @@
                     </li>
                 </ul>
                 <form class="d-flex">
-<<<<<<< HEAD
-                    <a href="index.php?page=deconnexion" class="btn btn-outline-danger">Se déconnecter</a>
-=======
                     <button class="btn btn-outline-danger">Se déconnecter</button>
->>>>>>> 2c811c22349dc232d116ebbb558dc6c179a383fb
                 </form>
             </div>
         </div>

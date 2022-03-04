@@ -6,19 +6,6 @@ $elements = $root . 'elements' . DIRECTORY_SEPARATOR;
 
 $page = $_REQUEST['page'] ?? 'accueil';
 
-$sid = $_SESSION['id'] ?? '';
-
-/* $access = ['accueil', 'inscription'];
-if (!empty($sid)) {
-    $access = ['listePatients', 'ajouterPatient', 'deconnexion'];
-}
-
-if (!in_array($page, $access)) {
-    header('Location:index.php?page=accueil');
-    exit();
-} */
-
-
 require_once $elements . 'header.php';
 
 switch ($page) {
@@ -36,12 +23,6 @@ switch ($page) {
 
     case 'inscription':
         require_once $pages . 'inscription.php';
-    break;
-
-    case 'deconnexion':
-        unset($_SESSION['id']);
-        header('Location:index.php?page=accueil');
-        exit();
     break;
 
     default:

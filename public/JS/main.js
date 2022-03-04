@@ -3,7 +3,7 @@ var idMedecin = localStorage.getItem('idMedecin');
 $(function () {
     const url = window.location.href;
 
-    if (url.includes("page=listePatients")) {
+    function listePatients() {
         $.ajax({
             url: 'http://localhost:8000/listing/patient',
             data: 'idMedecin=' + idMedecin
@@ -25,7 +25,7 @@ $(function () {
         });
     }
 
-    $('#connexion').click((e) => {
+    function connexion() {
         const identifiant = $('#username').val();
         const mdp = $('#password').val();
 
@@ -35,37 +35,19 @@ $(function () {
             data: 'identifiant=' + identifiant + '&mdp=' + mdp
         });
      
-        request.done(function (datas, textStatus, jqXHR){
-            localStorage.setItem('idMedecin', datas);
-        });
-     
-        request.fail(function (jqXHR, textStatus, errorThrown){
-            console.error(
-                "Erreur d'authentification: "+
-                textStatus, errorThrown
-            );
-        });
-
-        /* request = $.ajax({
-            type: 'GET',
-            url: 'JS/idConnecte.php',
-            data: 'idMedecin=' + identifiant
-        });
-     
         request.done(function (datas, textStatus, jqXHR) {
-            localStorage.setItem('idMedecin', identifiant);
-            window.location.href= "index.php?page=listePatients";
+            window.href.location = "index.php?page=listePatients";
         });
      
-        request.fail(function (jqXHR, textStatus, errorThrown){
+        request.fail(function (jqXHR, textStatus, errorThrown) {
             console.error(
                 "Erreur d'authentification: "+
                 textStatus, errorThrown
             );
-        }); */
-    });
+        });
+    }
 
-    $('#btnInscription').click((e) => {
+    function inscriptionMedecin() {
         const id = $('#id').val();
         const nom = $('#nom').val();
         const prenom = $('#prenom').val();
@@ -88,10 +70,9 @@ $(function () {
                 textStatus, errorThrown
             );
         });
-    });
+    }
 
-    $('#btnInscriptionPatient').click((e) => {
-        const idMedecin = localStorage.getItem('idMedecin');
+    function inscritionPatient() {
         const nom = $('#nom').val();
         const prenom = $('#prenom').val();
         const dateNaissance = $('#dateNaissance').val();
@@ -116,6 +97,21 @@ $(function () {
                 textStatus, errorThrown
             );
         });
+    }
 
+    if (url.includes("page=listePatients")) {
+        listePatients();
+    }
+
+    $('#connexion').click((e) => {
+        connexion();
+    });
+
+    $('#btnInscription').click((e) => {
+        inscriptionMedecin();
+    });
+
+    $('#btnInscriptionPatient').click((e) => {
+        inscritionPatient();
     });
 });

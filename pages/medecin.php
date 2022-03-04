@@ -23,8 +23,4 @@
         </tbody>
     </table>
     <div class="loader"></div>
-<<<<<<< HEAD
 </div>
-=======
-</div>
->>>>>>> 2c811c22349dc232d116ebbb558dc6c179a383fb
