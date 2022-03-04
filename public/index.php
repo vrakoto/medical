@@ -8,7 +8,7 @@ $page = $_REQUEST['page'] ?? 'accueil';
 
 $sid = $_SESSION['id'] ?? '';
 
-$access = ['accueil', 'inscription'];
+/* $access = ['accueil', 'inscription'];
 if (!empty($sid)) {
     $access = ['listePatients', 'ajouterPatient', 'deconnexion'];
 }
@@ -16,7 +16,7 @@ if (!empty($sid)) {
 if (!in_array($page, $access)) {
     header('Location:index.php?page=accueil');
     exit();
-}
+} */
 
 
 require_once $elements . 'header.php';
@@ -38,15 +38,12 @@ switch ($page) {
         require_once $pages . 'inscription.php';
     break;
 
-<<<<<<< HEAD
     case 'deconnexion':
         unset($_SESSION['id']);
         header('Location:index.php?page=accueil');
         exit();
     break;
 
-=======
->>>>>>> 2c811c22349dc232d116ebbb558dc6c179a383fb
     default:
         require_once $pages . '404.php';
     break;
