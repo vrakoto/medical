@@ -1,27 +1,13 @@
 <div class="container" id="accueil">
     <div class="login-box">
         <div class="login-key">
-            <i class="fa-solid fa-user-doctor" aria-hidden="true"></i>
+            <i class="fa-solid fa-house"></i>
         </div>
-        <div class="login-title">
-            DOCTOR PANEL
-        </div>
+        <img src="../elements/accueil.JPG" alt="Image accueil" class="img mt-3">
 
-        <div class="login-form">
-            <div class="form-group">
-                <input type="text" id="username" autofocus autocomplete="off" required>
-                <label for="username"><i class="fa-solid fa-fingerprint"></i> Identifiant</label>
-            </div>
-            
-            <div class="form-group">
-                <input type="password" id="password" autocomplete="off" required>
-                <label for="password"><i class="fa-solid fa-key"></i> Mot de passe</label>
-            </div>
-
-            <div class="login-button">
-                <button class="btn btn-outline-primary" id="connexion">SE CONNECTER</button>
-                <a href="index.php?page=inscription" class="btn btn-outline-primary">INSCRIPTION</a>
-            </div>
+        <div class="login-button mt-5">
+            <a href="index.php?page=connexion" class="btn btn-outline-primary mx-3">SE CONNECTER</button>
+            <a href="index.php?page=inscription" class="btn btn-outline-primary">INSCRIPTION</a>
         </div>
     </div>
 </div>

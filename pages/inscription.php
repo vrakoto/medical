@@ -1,4 +1,6 @@
 <div class="container" id="inscription">
+    <div class="loader d-none toploading"></div>
+
     <div class="login-box">
         <div class="login-key">
             <i class="fa-solid fa-keyboard"></i>

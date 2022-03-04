@@ -154,6 +154,12 @@ input:focus {
     animation: spin 2s linear infinite;
 }
 
+.loader.toploading {
+    position: unset;
+    margin-top: 50px;
+
+}
+
 /* Safari */
 @-webkit-keyframes spin {
     0% {

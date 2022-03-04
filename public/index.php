@@ -13,6 +13,10 @@ switch ($page) {
         require_once $pages . 'accueil.php';
     break;
 
+    case 'connexion':
+        require_once $pages . 'connexion.php';
+    break;
+
     case 'listePatients':
         require_once $pages . 'listePatients.php';
     break;

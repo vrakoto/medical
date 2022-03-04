@@ -1,4 +1,5 @@
 <div class="container" id="inscription">
+    <div class="loader d-none toploading"></div>
     <div class="login-box">
         <div class="login-key">
             <i class="fa-solid fa-user-injured"></i>
@@ -9,7 +10,7 @@
 
         <div class="login-form" method="POST" action="index.php?page=ajouterPatient">
             <div class="form-group">
-                <input type="text" id="nom" autocomplete="off" required>
+                <input type="text" id="nom" autofocus autocomplete="off" required>
                 <label for="nom"><i class="fa-solid fa-id-card"></i> Nom</label>
             </div>
 
@@ -19,8 +20,8 @@
             </div>
             
             <div class="form-group">
-                <input type="text" id="age" autocomplete="off" required>
-                <label for="age"><i class="fa-solid fa-calendar-days"></i> Age</label>
+                <p class="text-muted mb-0"><i class="fa-solid fa-calendar-days"></i> Date Naissance</p>
+                <input type="date" id="dateNaissance" autocomplete="off" required>
             </div>
 
             <div class="form-group">
