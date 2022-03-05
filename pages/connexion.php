@@ -21,7 +21,7 @@
             </div>
 
             <div class="login-button d-flex align-items-center">
-                <button class="btn btn-outline-primary" type="submit">SE CONNECTER</button>
+                <button class="btn btn-outline-primary" type="submit">CONNEXION</button>
                 <a href="index.php?page=inscription" class="btn btn-outline-primary mx-2">INSCRIPTION</a>
             </div>
         </form>

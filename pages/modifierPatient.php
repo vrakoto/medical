@@ -18,25 +18,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- <tr>
-                        <th scope="row" contenteditable>La maladie actuelle du patient</th>
-                        <td contenteditable>La description actuelle de la maladie</td>
-                    </tr>
-
-                    <tr>
-                        <th class="laMaladie" contenteditable>COVID-19</th>
-                        <td class="laDescription" contenteditable>choppé dans les transports</td>
-                    </tr>
-
-                    <tr>
-                        <th class="laMaladie" contenteditable>Cancer poumon</th>
-                        <td class="laDescription" contenteditable>Tabac</td>
-                    </tr>
-
-                    <tr>
-                        <th class="laMaladie" contenteditable>Diabete</th>
-                        <td class="laDescription" contenteditable>Trop de sucres</td>
-                    </tr> -->
                 </tbody>
             </table>
 
@@ -46,6 +27,7 @@
 
             <div class="login-button">
                 <button class="btn btn-outline-primary" id="modification">MODIFIER</button>
+                <button class="btn btn-outline-danger" id="suppression">SUPPRIMER LE PATIENT</button>
             </div>
         </div>
     </div>

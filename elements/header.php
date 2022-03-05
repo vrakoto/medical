@@ -19,11 +19,11 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.php?page=listePatients">Liste des patients</a>
+                        <a class="link-listePatients nav-link" aria-current="page" href="index.php?page=listePatients">Liste des patients</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php?page=ajouterPatient">Créer un patient</a>
+                        <a class="link-ajouterPatient nav-link" href="index.php?page=ajouterPatient">Créer un patient</a>
                     </li>
                 </ul>
                 <form class="d-flex">

@@ -14,20 +14,17 @@ $(function () {
             url: 'http://localhost:8000/listing/patient',
             data: 'tokenMedecin=' + tokenMedecin
         }).done((data) => {
-            let items = [];
-            $.each(data, function (key, val) {
-                items.push("<tr>");
-                items.push("<th scope='row'>" + val.id + "</th>");
-                items.push("<td>" + val.nom + "</td>");
-                items.push("<td>" + val.prenom + "</td>");
-                items.push("<td>" + val.age + "</td>");
-                items.push("<td>" + val.maladie + "</td>");
-                items.push("<td>" + val.dateNaissance + "</td>");
-                items.push("<td><a href='index.php?page=modifierPatient&id="+ val.id + "' class='btn btn-primary'>Modifier</a></td>");
-                items.push("</tr>");
-            });
+            if (data.length <= 0) {
+                $('#statutListe').empty();
+                $('#statutListe').append("Aucun patient.");
+                $('.container').append("<a class='d-flex justify-content-center btn btn-primary' href='index.php?page=ajouterPatient'>Ajouter des patients</a>");
+            } else {
+                for (let i = 0; i < data.length; i++) {
+                    const val = data[i];
+                    $(".listePatients").last().append("<tr><th scope='row'>" + val.id + "</th> <td>" + val.nom + "</td> <td>" + val.prenom + "</td> <td>" + val.age + "</td> <td>" + val.maladie + "</td> <td>" + val.dateNaissance + "</td> <td> <a href='index.php?page=modifierPatient&id="+ val.id + "' class='btn btn-primary'>Modifier</a> </td> </tr>");
+                }
+            }
 
-            $(".listePatients tbody").append(items);
             $(".loading").remove();
         });
     }
@@ -166,8 +163,6 @@ $(function () {
     function modifierPatient() {
         var idPatient = urlPage.replace(/\D/g, ""); // recupère only number from string
 
-        $('#identifiantPatient').append(idPatient);
-
         var infos = [];
         const lesMaladies = $('.laMaladie');
         const lesDescriptions = $('.laDescription');
@@ -210,8 +205,47 @@ $(function () {
         });
     }
 
+    function supprimerPatient() {
+        var idPatient = urlPage.replace(/\D/g, ""); // recupère only number from string
+
+        request = $.ajax({
+            type: 'POST',
+            url: 'http://localhost:8000/modification/patient/suppression',
+            data: 'medecinToken=' + tokenMedecin + '&idPatient=' + idPatient
+        });
+
+        // pendant le chargement
+        $('.loading').removeClass('d-none');
+        $(".login-form").css({ filter: 'blur(5px)' });
+        $('.login-form').css('pointer-events', 'none');
+
+        request.done(function (datas, textStatus, jqXHR) {
+            $('#message').modal('toggle');
+            $('#message .modal-header').addClass("bg-success text-light");
+            $('#message .modal-title').text("Patient supprimé.");
+
+            setTimeout(function () {
+                $('#message .modal-header').removeClass("bg-success");
+                window.location.href = "index.php?page=listePatients";
+            }, 3000);
+        });
+
+        request.fail(function (jqXHR, textStatus, errorThrown) {
+            $('#message').modal('toggle');
+            $('#message .modal-header').addClass("bg-danger text-light");
+            $('#message .modal-title').text("Erreur suppression");
+        });
+
+        request.always(function () {
+            $('.loading').addClass('d-none');
+            $('.login-form').removeAttr('style');
+        });
+    }
+
     function getMaladiesPatient() {
         const idPatient = urlPage.replace(/\D/g, "");
+        $('#identifiantPatient').empty();
+        $('#identifiantPatient').append(idPatient);
 
         request = $.ajax({
             type: 'POST',
@@ -219,9 +253,13 @@ $(function () {
             data: 'tokenMedecin=' + tokenMedecin + '&idPatient=' + idPatient
         });
 
+        $('.loading').removeClass("d-none");
+
         request.done(function (datas, textStatus, jqXHR) {
-            // $("#modifierPatient").last().append("<tr><td class='laMaladie' contenteditable></td><td class='laDescription' contenteditable></td></tr>");
-            console.log(datas);
+            datas.forEach(element => {
+                console.log(element);
+                $("#modifierPatient").last().append("<tr><td class='laMaladie' contenteditable>" + element.maladie + "</td><td class='laDescription' contenteditable>" + element.description + "</td></tr>");
+            });
         });
 
         request.fail(function (jqXHR, textStatus, errorThrown) {
@@ -229,6 +267,10 @@ $(function () {
             $('#message .modal-header').addClass("bg-danger text-light");
             $('#message .modal-title').text("Erreur récupération maladies");
         });
+
+        request.always(function () {
+            $('.loading').addClass('d-none');
+        })
     }
 
     function deconnexion() {
@@ -237,9 +279,12 @@ $(function () {
     }
 
     if (urlPage.includes("page=listePatients")) {
+        $('.link-listePatients').addClass('active');
         listePatients();
     } else if (urlPage.includes("page=modifierPatient")) {
         getMaladiesPatient();
+    } else if (urlPage.includes("page=ajouterPatient")) {
+        $('.link-ajouterPatient').addClass('active');
     }
 
     $('#connexion').submit((e) => {
@@ -264,6 +309,10 @@ $(function () {
     $('#modification').click((e) => {
         modifierPatient();
     });
+
+    $('#suppression').click((e) => {
+        supprimerPatient();
+    })
 
     $('#deconnexion').click((e) => {
         deconnexion();
