@@ -1,13 +1,13 @@
 var request;
 var idMedecin = sessionStorage.getItem('idMedecin');
 var tokenMedecin = sessionStorage.getItem('tokenMedecin');
+var urlPage = window.location.href;
 $(function () {
 
     if (tokenMedecin) {
         $('nav').removeClass('d-none');
     }
 
-    const url = window.location.href;
 
     function listePatients() {
         $.ajax({
@@ -23,7 +23,7 @@ $(function () {
                 items.push("<td>" + val.age + "</td>");
                 items.push("<td>" + val.maladie + "</td>");
                 items.push("<td>" + val.dateNaissance + "</td>");
-                items.push("<td><a href='index.php?page=modifierPatient&id="+ key + "' class='btn btn-primary'>Modifier</a></td>");
+                items.push("<td><a href='index.php?page=modifierPatient&id="+ val.id + "' class='btn btn-primary'>Modifier</a></td>");
                 items.push("</tr>");
             });
 
@@ -164,8 +164,9 @@ $(function () {
     }
 
     function modifierPatient() {
-        const urlPatient = window.location.href;
-        const idPatient = urlPatient.replace(/\D/g, ""); // recupère only number from string
+        var idPatient = urlPage.replace(/\D/g, ""); // recupère only number from string
+
+        $('#identifiantPatient').append(idPatient);
 
         var infos = [];
         const lesMaladies = $('.laMaladie');
@@ -179,7 +180,6 @@ $(function () {
         }
 
         const m = JSON.stringify(infos);
-
 
         request = $.ajax({
             type: 'POST',
@@ -210,13 +210,36 @@ $(function () {
         });
     }
 
+    function getMaladiesPatient() {
+        const idPatient = urlPage.replace(/\D/g, "");
+
+        request = $.ajax({
+            type: 'POST',
+            url: 'http://localhost:8000/modification/patient/recuperation',
+            data: 'tokenMedecin=' + tokenMedecin + '&idPatient=' + idPatient
+        });
+
+        request.done(function (datas, textStatus, jqXHR) {
+            // $("#modifierPatient").last().append("<tr><td class='laMaladie' contenteditable></td><td class='laDescription' contenteditable></td></tr>");
+            console.log(datas);
+        });
+
+        request.fail(function (jqXHR, textStatus, errorThrown) {
+            $('#message').modal('toggle');
+            $('#message .modal-header').addClass("bg-danger text-light");
+            $('#message .modal-title').text("Erreur récupération maladies");
+        });
+    }
+
     function deconnexion() {
         sessionStorage.removeItem('tokenMedecin');
         sessionStorage.removeItem('idMedecin');
     }
 
-    if (url.includes("page=listePatients")) {
+    if (urlPage.includes("page=listePatients")) {
         listePatients();
+    } else if (urlPage.includes("page=modifierPatient")) {
+        getMaladiesPatient();
     }
 
     $('#connexion').submit((e) => {
