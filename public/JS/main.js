@@ -17,13 +17,13 @@ $(function () {
             let items = [];
             $.each(data, function (key, val) {
                 items.push("<tr>");
-                items.push("<th scope='row'>" + key + "</th>");
+                items.push("<th scope='row'>" + val.id + "</th>");
                 items.push("<td>" + val.nom + "</td>");
                 items.push("<td>" + val.prenom + "</td>");
                 items.push("<td>" + val.age + "</td>");
                 items.push("<td>" + val.maladie + "</td>");
                 items.push("<td>" + val.dateNaissance + "</td>");
-                items.push("<td><a href='index.php?page=modifierPatient&id="+ key + "' class='btn btn-primary'>Modifier</a></td>");
+                items.push("<td><a href='index.php?page=modifierPatient&id="+ val.id + "' class='btn btn-primary'>Modifier</a></td>");
                 items.push("</tr>");
             });
 
