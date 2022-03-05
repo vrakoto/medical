@@ -8,7 +8,6 @@
                 <th scope="col">Prénom</th>
                 <th scope="col">Age</th>
                 <th scope="col">Maladie</th>
-                <th scope="col">Date d'ajout</th>
             </tr>
         </thead>
         <tbody>
@@ -18,7 +17,6 @@
                 <td>Otto</td>
                 <td>45</td>
                 <td>Sida</td>
-                <td>03/03/2022</td>
                 <td><a href="index.php?page=modifierPatient&" class="btn btn-primary">Modifier</a></td>
             </tr>
 
@@ -93,5 +91,5 @@
             </tr> -->
         </tbody>
     </table>
-    <div class="loader"></div>
+    <i class="d-flex justify-content-center fas fa-spinner fa-spin fa-5x mt-5 loading"></i>
 </div>

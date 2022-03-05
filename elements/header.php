@@ -23,18 +23,8 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php?page=ajouterPatient">Ajouter un patient</a>
+                        <a class="nav-link" href="index.php?page=ajouterPatient">Créer un patient</a>
                     </li>
-
-                    <!-- <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Administration patient
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="index.php?page=ajouterPatient">Ajouter un patient</a></li>
-                            <li><a class="dropdown-item" href="index.php?page=modifierPatient">Modifier un patient</a></li>
-                        </ul>
-                    </li> -->
                 </ul>
                 <form class="d-flex">
                     <button class="btn btn-outline-danger" id="deconnexion">Se déconnecter</button>

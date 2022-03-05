@@ -5,11 +5,13 @@
         <div class="login-key">
             <i class="fa-solid fa-keyboard"></i>
         </div>
+        <i class="d-none fas fa-spinner fa-spin fa-2x mt-2 text-light loading"></i>
+
         <div class="login-title">
             INSCRIPTION
         </div>
 
-        <div class="login-form" method="POST" action="index.php?page=accueil">
+        <form class="login-form" method="POST" id="inscriptionMedecin">
         
             <div class="form-group">
                 <input type="text" id="id" autofocus autocomplete="off" required>
@@ -37,9 +39,9 @@
             </div>
 
             <div class="login-button">
-                <button class="btn btn-outline-primary" id="btnInscription">S'INSCRIRE</button>
-                <a href="index.php?page=accueil" class="btn btn-outline-primary" id="btnInscription">SE CONNECTER</a>
+                <button class="btn btn-outline-primary" type="submit">S'INSCRIRE</button>
+                <a href="index.php?page=connexion" class="btn btn-outline-primary">SE CONNECTER</a>
             </div>
-        </div>
+        </form>
     </div>
 </div>

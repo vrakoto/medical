@@ -1,5 +1,4 @@
 var request;
-// var idMedecin = localStorage.getItem('idMedecin');
 var idMedecin = sessionStorage.getItem('idMedecin');
 var tokenMedecin = sessionStorage.getItem('tokenMedecin');
 $(function () {
@@ -28,7 +27,7 @@ $(function () {
             });
 
             $(".listePatients tbody").append(items);
-            $(".loader").remove();
+            $(".loading").remove();
         });
     }
 
@@ -42,30 +41,37 @@ $(function () {
             data: 'username=' + identifiant + '&password=' + mdp
         });
 
-        $(".loader").removeClass("d-none");
-     
+        // pendant le chargement
+        $(".loading").removeClass("d-none");
+        $("#connexion").css({ filter: 'blur(5px)' });
+        $('#connexion').css('pointer-events', 'none');
+
+
         request.done(function (datas, textStatus, jqXHR) {
             sessionStorage.setItem('tokenMedecin', datas.token);
             sessionStorage.setItem('idMedecin', datas.user);
+
+            $('#message .modal-title').empty();
             $('#message').modal('toggle');
             $('#message .modal-header').addClass("bg-success text-light");
             $('#message .modal-title').append("Connexion réussie !");
 
-            setTimeout(function(){
+            setTimeout(function () {
                 $('#message .modal-header').removeClass("bg-success");
                 window.location.href = "index.php?page=listePatients";
             }, 3000);
         });
-     
+
         request.fail(function (jqXHR, textStatus, errorThrown) {
-            console.error(
-                "Erreur d'authentification: "+
-                textStatus, errorThrown
-            );
+            $('#message .modal-title').empty();
             $('#message').modal('toggle');
-            $('#message .modal-header').addClass("bg-danger");
+            $('#message .modal-header').addClass("bg-danger text-light");
             $('#message .modal-title').append("Erreur d'authentification");
-            $(".loader").addClass("d-none");
+        });
+
+        request.always(function () {
+            $(".loading").addClass("d-none");
+            $('#connexion').removeAttr('style');
         });
     }
 
@@ -82,31 +88,31 @@ $(function () {
             data: 'username=' + id + '&nom=' + nom + '&prenom=' + prenom + '&mdp=' + mdp + '&mdp_confirm=' + mdp_c
         });
 
-        $('.loader').removeClass('d-none');
-     
-        request.done(function (datas, textStatus, jqXHR){
+        // pendant le chargement
+        $(".loading").removeClass("d-none");
+        $("#inscriptionMedecin").css({ filter: 'blur(5px)' });
+        $('#inscriptionMedecin').css('pointer-events', 'none');
+
+        request.done(function (datas, textStatus, jqXHR) {
             $('#message').modal('toggle');
             $('#message .modal-header').addClass("bg-success text-light");
             $('#message .modal-title').text("Inscription terminé ! Vous pouvez désormais vous connecter.");
-            
-            setTimeout(function(){
+
+            setTimeout(function () {
                 $('#message .modal-header').removeClass("bg-success");
                 window.location.href = "index.php?page=connexion";
             }, 3000);
         });
-     
-        request.fail(function (jqXHR, textStatus, errorThrown){
-            console.error(
-                "The following error occurred: "+
-                textStatus, errorThrown
-            );
+
+        request.fail(function (jqXHR, textStatus, errorThrown) {
             $('#message').modal('toggle');
             $('#message .modal-header').addClass("bg-danger text-light");
             $('#message .modal-title').text("Erreur formulaire");
         });
 
         request.always(function () {
-            $('.loader').addClass('d-none');
+            $('.loading').addClass('d-none');
+            $('#inscriptionMedecin').removeAttr('style');
         })
     }
 
@@ -125,23 +131,31 @@ $(function () {
             data: 'tokenMedecin=' + tokenMedecin + '&username=' + idMedecin + '&nom=' + nom + '&prenom=' + prenom + '&dateNaissance=' + dateNaissance + '&maladie=' + maladies
         });
 
-        $('.loader').removeClass('d-none');
-     
-        request.done(function (datas, textStatus, jqXHR){
+        // pendant le chargement
+        $('.loading').removeClass('d-none');
+        $('.login-title').empty();
+        $('.login-title').text("CRÉATION PATIENT EN COURS ...");
+        $("#creationPatient").css({ filter: 'blur(5px)' });
+        $('#creationPatient').css('pointer-events', 'none');
+
+        request.done(function (datas, textStatus, jqXHR) {
             $('#message').modal('toggle');
             $('#message .modal-header').addClass("bg-success text-light");
             $('#message .modal-title').text("Patient ajouté avec succès.");
         });
-     
-        request.fail(function (jqXHR, textStatus, errorThrown){
+
+        request.fail(function (jqXHR, textStatus, errorThrown) {
             $('#message').modal('toggle');
             $('#message .modal-header').addClass("bg-danger text-light");
             $('#message .modal-title').text("Erreur formulaire");
         });
 
         request.always(function () {
-            $('.loader').addClass('d-none');
-        })
+            $('.loading').addClass('d-none');
+            $('.login-title').empty();
+            $('.login-title').text("CRÉER UN PATIENT");
+            $('#creationPatient').removeAttr('style');
+        });
     }
 
     function ajouterMaladie() {
@@ -157,15 +171,18 @@ $(function () {
         listePatients();
     }
 
-    $('#connexion').click((e) => {
+    $('#connexion').submit((e) => {
+        e.preventDefault();
         connexion();
     });
 
-    $('#btnInscription').click((e) => {
+    $('#inscriptionMedecin').submit((e) => {
+        e.preventDefault();
         inscriptionMedecin();
     });
 
-    $('#btnInscriptionPatient').click((e) => {
+    $('#creationPatient').submit((e) => {
+        e.preventDefault();
         inscritionPatient();
     });
 
