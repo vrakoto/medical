@@ -17,7 +17,7 @@ $(function () {
             let items = [];
             $.each(data, function (key, val) {
                 items.push("<tr>");
-                items.push("<th scope='row'>" + key + "</th>");
+                items.push("<th scope='row'>" + val.id + "</th>");
                 items.push("<td>" + val.nom + "</td>");
                 items.push("<td>" + val.prenom + "</td>");
                 items.push("<td>" + val.age + "</td>");
