@@ -3,6 +3,8 @@
         <div class="login-key">
             <i class="fa-solid fa-notes-medical"></i>
         </div>
+        <i class="d-none fas fa-spinner fa-spin fa-2x mt-2 text-light loading"></i>
+
         <div class="login-title">
             MODIFIER LE PATIENT N°..
         </div>
@@ -16,10 +18,25 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
+                    <!-- <tr>
+                        <th scope="row" contenteditable>La maladie actuelle du patient</th>
+                        <td contenteditable>La description actuelle de la maladie</td>
                     </tr>
+
+                    <tr>
+                        <th class="laMaladie" contenteditable>COVID-19</th>
+                        <td class="laDescription" contenteditable>choppé dans les transports</td>
+                    </tr>
+
+                    <tr>
+                        <th class="laMaladie" contenteditable>Cancer poumon</th>
+                        <td class="laDescription" contenteditable>Tabac</td>
+                    </tr>
+
+                    <tr>
+                        <th class="laMaladie" contenteditable>Diabete</th>
+                        <td class="laDescription" contenteditable>Trop de sucres</td>
+                    </tr> -->
                 </tbody>
             </table>
 
@@ -28,7 +45,7 @@
             </div>
 
             <div class="login-button">
-                <button class="btn btn-outline-primary">MODIFIER</button>
+                <button class="btn btn-outline-primary" id="modification">MODIFIER</button>
             </div>
         </div>
     </div>
