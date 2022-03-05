@@ -23,7 +23,7 @@
             
             <div class="form-group">
                 <p class="text-muted mb-0"><i class="fa-solid fa-calendar-days"></i> Date Naissance</p>
-                <input type="date" id="dateNaissance" autocomplete="off" required>
+                <input type="date" id="dateNaissance" class="text-light" autocomplete="off" required>
             </div>
 
             <div class="form-group">

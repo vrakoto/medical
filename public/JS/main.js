@@ -23,6 +23,7 @@ $(function () {
                 items.push("<td>" + val.age + "</td>");
                 items.push("<td>" + val.maladie + "</td>");
                 items.push("<td>" + val.dateAjout + "</td>");
+                items.push("<td><a href='index.php?page=modifierPatient' class='btn btn-primary'>Modifier</a></td>");
                 items.push("</tr>");
             });
 

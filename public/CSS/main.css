@@ -142,3 +142,8 @@ input:focus {
 #addMaladie {
     cursor: pointer;
 }
+
+.test  {
+    background: rgb(80, 80, 80);
+    color: #FFF;
+}
