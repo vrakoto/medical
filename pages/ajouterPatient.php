@@ -8,7 +8,7 @@
             AJOUTER UN PATIENT
         </div>
 
-        <div class="login-form" method="POST" action="index.php?page=ajouterPatient">
+        <form class="login-form" id="creationPatient" method="POST" action="index.php?page=ajouterPatient">
             <div class="form-group">
                 <input type="text" id="nom" autofocus autocomplete="off" required>
                 <label for="nom"><i class="fa-solid fa-id-card"></i> Nom</label>
@@ -25,13 +25,13 @@
             </div>
 
             <div class="form-group">
-                <input type="text" id="maladie" autocomplete="off" required>
+                <input type="text" id="maladie" autocomplete="off">
                 <label for="maladie"><i class="fa-solid fa-virus"></i> Maladie</label>
             </div>
 
             <div class="login-button">
-                <button class="btn btn-outline-primary" id="btnInscriptionPatient">CRÉER</button>
+                <button type="submit" class="btn btn-outline-primary" id="btnInscriptionPatient">CRÉER</button>
             </div>
-        </div>
+        </form>
     </div>
 </div>

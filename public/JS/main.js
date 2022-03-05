@@ -165,7 +165,8 @@ $(function () {
         inscriptionMedecin();
     });
 
-    $('#btnInscriptionPatient').click((e) => {
+    $('#creationPatient').submit((e) => {
+        e.preventDefault();
         inscritionPatient();
     });
 
