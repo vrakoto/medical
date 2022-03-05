@@ -6,7 +6,7 @@
         <i class="d-none fas fa-spinner fa-spin fa-2x mt-2 text-light loading"></i>
 
         <div class="login-title">
-            MODIFIER LE PATIENT N°..
+            MODIFIER LE PATIENT N° <span id="identifiantPatient"></span>
         </div>
 
         <div class="login-form">

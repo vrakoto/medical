@@ -23,7 +23,7 @@ $(function () {
                 items.push("<td>" + val.age + "</td>");
                 items.push("<td>" + val.maladie + "</td>");
                 items.push("<td>" + val.dateNaissance + "</td>");
-                items.push("<td><a href='index.php?page=modifierPatient' class='btn btn-primary'>Modifier</a></td>");
+                items.push("<td><a href='index.php?page=modifierPatient&id="+ key + "' class='btn btn-primary'>Modifier</a></td>");
                 items.push("</tr>");
             });
 
@@ -164,6 +164,9 @@ $(function () {
     }
 
     function modifierPatient() {
+        const urlPatient = window.location.href;
+        const idPatient = urlPatient.replace(/\D/g, ""); // recupère only number from string
+
         var infos = [];
         const lesMaladies = $('.laMaladie');
         const lesDescriptions = $('.laDescription');
@@ -177,10 +180,11 @@ $(function () {
 
         const m = JSON.stringify(infos);
 
+
         request = $.ajax({
             type: 'POST',
             url: 'http://localhost:8000/modification/patient',
-            data: 'medecinToken=' + tokenMedecin + '&lesMaladies=' + m
+            data: 'medecinToken=' + tokenMedecin + '&idPatient=' + idPatient + '&lesMaladies=' + m
         });
 
         // pendant le chargement
