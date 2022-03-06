@@ -10,12 +10,20 @@ html {
     height: 100%;
 }
 
+.imgAccueil {
+    max-width: 90%;
+}
+
 .login-box {
     margin-top: 75px;
     padding: 10px 30px;
     background: #1A2226;
     text-align: center;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+#accueil .login-box {
+    background: #2e3d44;
 }
 
 .login-key {
@@ -147,4 +155,20 @@ input:focus {
 
 #addMaladie {
     cursor: pointer;
+}
+
+@media screen and (max-width: 420px) {
+    #accueil a {
+        margin-top: 20px;
+    }
+
+    .login-key {
+        font-size: 50px;
+    }
+}
+
+@media screen and (max-width: 770px) {
+    .imgAccueil {
+        width: 100%;
+    }
 }

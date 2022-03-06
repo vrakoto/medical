@@ -4,8 +4,22 @@ var tokenMedecin = sessionStorage.getItem('tokenMedecin');
 var urlPage = window.location.href;
 $(function () {
 
-    if (tokenMedecin) {
+    const laPage = urlPage.split('page=')[1];
+    var access;
+    var redirect;
+
+    if (!tokenMedecin) {
+        access = ["accueil", "connexion", "inscription"];
+        redirect = 'index.php?page=accueil';
+    } else {
+        access = ["listePatients", "ajouterPatient", "modifierPatient"];
+        redirect = 'index.php?page=listePatients';
         $('nav').removeClass('d-none');
+        $('.navbar-brand').text(idMedecin);
+    }
+    
+    if (!access.includes(laPage)) {
+        window.location.href = redirect;
     }
 
 

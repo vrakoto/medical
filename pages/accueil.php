@@ -3,7 +3,7 @@
         <div class="login-key">
             <i class="fa-solid fa-house"></i>
         </div>
-        <img src="../elements/accueil.JPG" alt="Image accueil" class="img mt-3">
+        <img class="imgAccueil mt-3" src="../elements/fe.JPG" alt="Image accueil" class="img mt-3">
 
         <div class="login-button mt-5">
             <a href="index.php?page=connexion" class="btn btn-outline-primary mx-3">SE CONNECTER</button>

@@ -1,10 +1,13 @@
 <?php
-session_start();
 $root = dirname(__DIR__) . DIRECTORY_SEPARATOR;
 $pages = $root . 'pages' . DIRECTORY_SEPARATOR;
 $elements = $root . 'elements' . DIRECTORY_SEPARATOR;
 
-$page = $_REQUEST['page'] ?? 'accueil';
+$page = $_REQUEST['page'];
+if (!isset($page)) {
+    header('Location:index.php?page=accueil');
+    exit();
+}
 
 require_once $elements . 'header.php';
 
