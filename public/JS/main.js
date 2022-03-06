@@ -3,7 +3,6 @@ var idMedecin = sessionStorage.getItem('idMedecin');
 var tokenMedecin = sessionStorage.getItem('tokenMedecin');
 var urlPage = window.location.href;
 $(function () {
-
     const laPage = urlPage.split('page=')[1];
     var access;
     var redirect;
@@ -11,15 +10,16 @@ $(function () {
     if (!tokenMedecin) {
         access = ["accueil", "connexion", "inscription"];
         redirect = 'index.php?page=accueil';
+        console.log(window.location.href)
+        if (!window.location.href.includes(redirect)){
+            window.location.href = redirect;
+        }
+
     } else {
         access = ["listePatients", "ajouterPatient", "modifierPatient"];
         redirect = 'index.php?page=listePatients';
         $('nav').removeClass('d-none');
         $('.navbar-brand').text(idMedecin);
-    }
-    
-    if (!access.includes(laPage)) {
-        window.location.href = redirect;
     }
 
 
@@ -272,7 +272,13 @@ $(function () {
         request.done(function (datas, textStatus, jqXHR) {
             datas.forEach(element => {
                 console.log(element);
-                $("#modifierPatient").last().append("<tr><td class='laMaladie' contenteditable>" + element.maladie + "</td><td class='laDescription' contenteditable>" + element.description + "</td></tr>");
+                let maladie = '';
+                let description = '';
+                if (element.maladie !== undefined){
+                    maladie = element.maladie;
+                    description = element.description;
+                }
+                $("#modifierPatient").last().append("<tr><td class='laMaladie' contenteditable>" + maladie + "</td><td class='laDescription' contenteditable>" + description + "</td></tr>");
             });
         });
 
